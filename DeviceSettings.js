@@ -2,44 +2,54 @@
 import { NativeModules, Linking, Platform } from 'react-native';
 const { RNOpenSettings } = NativeModules;
 
-function open(){
-  try{
+function open() {
+  try {
     (Platform.OS === 'ios') ?
       Linking.openURL('App-prefs:') :
       RNOpenSettings.generalSettings();
-  }catch(err){
+  } catch (err) {
     console.error(err);
   }
 }
 
-function app(){
-  try{
+function app() {
+  try {
     (Platform.OS === 'ios') ?
       Linking.openURL('app-settings:') :
       RNOpenSettings.appSettings();
-  }catch(err){
+  } catch (err) {
     console.error(err);
   }
 }
 
-function wifi(){
-  try{
+function wifi() {
+  try {
     (Platform.OS === 'ios') ?
       Linking.openURL('App-prefs:root=WIFI') :
       RNOpenSettings.wifiSettings();
-  }catch(err){
+  } catch (err) {
     console.error(err);
   }
 }
 
-function location(){
-  try{
+function bluetooth() {
+  try {
+    (Platform.OS === 'ios') ?
+      Linking.openURL('App-prefs:root=BLUETOOTH') :
+      RNOpenSettings.bluetoothSettings();
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function location() {
+  try {
     if (Platform.OS !== 'ios') {
       RNOpenSettings.locationSettings();
     }
-  }catch(err){
+  } catch (err) {
     console.error(err);
   }
 }
 
-module.exports = { open , app, wifi, location };
+module.exports = { open, app, wifi, location, bluetooth };
