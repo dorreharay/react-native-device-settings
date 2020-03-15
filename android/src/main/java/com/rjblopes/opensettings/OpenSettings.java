@@ -61,7 +61,7 @@ public class OpenSettings extends ReactContextBaseJavaModule {
         Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        intent.setData(Uri.parse("package:" + reactContext.getPackageName()));
+        // intent.setData(Uri.parse("package:" + reactContext.getPackageName()));
         if (intent.resolveActivity(reactContext.getPackageManager()) != null) {
             reactContext.startActivity(intent);
         }
